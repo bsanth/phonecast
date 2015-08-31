@@ -6,11 +6,11 @@ Cast phone to computer
 
 In one shell, run
 
-```node node_screenshots.js```
+``` node node_screenshots.js ```
 
 In another shell run
 
-```./scripts/screenshots.sh```
+``` ./scripts/screenshots.sh ```
 
 Go to [localhost:3000](localhost:3000)
 
