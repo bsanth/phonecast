@@ -1,0 +1,49 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script>
+   function fetchBlob(uri, callback) {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', uri, true);
+     xhr.responseType = 'arraybuffer';
+
+     xhr.onload = function(e) {
+       if (this.status == 200) {
+         var blob = this.response;
+         if (callback) {
+           callback(blob);
+         }
+       }
+     };
+     xhr.send();
+   };
+
+   // http://stackoverflow.com/a/9458996/128597
+   function _arrayBufferToBase64(buffer) {
+       var binary = '';
+       var bytes = new Uint8Array(buffer);
+       var len = bytes.byteLength;
+       for (var i = 0; i < len; i++) {
+           binary += String.fromCharCode(bytes[i]);
+       }
+       return window.btoa(binary);
+   };
+
+   var getScreenshot = function() {
+      fetchBlob('screenshots/screen.jpeg', function(blob) {
+         var temp = _arrayBufferToBase64(blob);
+         $("#screenshot").attr("src",'data:image/jpeg;base64,'+ temp);
+      });
+      setTimeout(getScreenshot, 0);
+   };
+
+   getScreenshot();
+   //setInterval(getScreenshot, 10);
+
+</script>
+<style type="text/css">
+   img {
+      width: 400px;
+   }
+</style>
+<div id="image-div">
+   <img src="" id="screenshot">
+</div>
