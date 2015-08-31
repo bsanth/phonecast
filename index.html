@@ -28,9 +28,9 @@
    };
 
    var getScreenshot = function() {
-      fetchBlob('screenshots/screen.jpeg', function(blob) {
+      fetchBlob('screenshots/screen.png', function(blob) {
          var temp = _arrayBufferToBase64(blob);
-         $("#screenshot").attr("src",'data:image/jpeg;base64,'+ temp);
+         $("#screenshot").attr("src",'data:image/png;base64,'+ temp);
       });
       setTimeout(getScreenshot, 0);
    };
