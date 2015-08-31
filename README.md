@@ -2,6 +2,10 @@
 
 Cast phone to computer
 
+## Pre-reqs
+
+Connect phone to computer via USB before and make sure you have adb in path
+
 ## Instructions
 
 In one shell, run
