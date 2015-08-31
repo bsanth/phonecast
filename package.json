@@ -1,0 +1,23 @@
+{
+  "name": "phonecast",
+  "version": "1.0.0",
+  "description": "Cast phone to screen.",
+  "main": "node_screenshots.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node node_screenshots.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bsanth/phonecast.git"
+  },
+  "author": "Santhosh Kumar Bala Krishnan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bsanth/phonecast/issues"
+  },
+  "homepage": "https://github.com/bsanth/phonecast#readme"
+}
