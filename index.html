@@ -1,4 +1,4 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="jquery-2.1.4.min.js" ></script>
 <script>
    function fetchBlob(uri, callback) {
      var xhr = new XMLHttpRequest();
@@ -16,7 +16,6 @@
      xhr.send();
    };
 
-   // http://stackoverflow.com/a/9458996/128597
    function _arrayBufferToBase64(buffer) {
        var binary = '';
        var bytes = new Uint8Array(buffer);
@@ -36,7 +35,19 @@
    };
 
    getScreenshot();
-   //setInterval(getScreenshot, 10);
+
+   // Set screen size
+   $.getJSON("/api/dimensions", function(result){
+      $("#screenshot").width(result.width/3);
+      $("#screenshot").height(result.height/3);
+   });
+
+   $(function() {
+      // Get click event
+      $("#screenshot").click(function(e) {
+         $.post("/api/touch", { "x": e.offsetX*3, "y": e.offsetY*3});
+      });
+   })
 
 </script>
 <style type="text/css">
