@@ -33,6 +33,21 @@ router.post('/touch', function(req, res) {
    });
 })
 
+router.post('/key', function(req, res) {
+   if(req.body.key == 67 || req.body.key == 66 ) {
+      console.log('adb shell input keyevent ' + req.body.key);
+      exec('adb shell input keyevent ' + req.body.key, function(error, stdout, stderr) {
+         res.json({});
+      });
+   } else {
+      console.log('adb shell input text ' + req.body.key);
+      exec('adb shell input text ' + req.body.key, function(error, stdout, stderr) {
+         res.json({});
+      });
+   }
+
+})
+
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------

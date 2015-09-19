@@ -47,6 +47,27 @@
       $("#screenshot").click(function(e) {
          $.post("/api/touch", { "x": e.offsetX*3, "y": e.offsetY*3});
       });
+
+      $(document).bind("keypress", function(event) {
+        if ( event.which == 13 ) {
+            event.preventDefault();
+            $.post("/api/key", { "key": 66});
+        } else if (event.which == 32) {
+            if( event.target.disabled || event.target.readOnly ){
+                event.preventDefault();
+            }
+            $.post("/api/key", { "key": "%s"});
+        } else {
+            $.post("/api/key", { "key": String.fromCharCode(event.keyCode)});
+        }
+      });
+
+      $(document).bind("keydown keypress", function(event) {
+         if (event.which == 8) {
+            event.preventDefault();
+            $.post("/api/key", { "key": 67});
+         }
+      });
    })
 
 </script>
