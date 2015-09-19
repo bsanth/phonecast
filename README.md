@@ -14,7 +14,8 @@ In one shell, run
 
 In another shell run
 
-``` cd scripts
+``` 
+   cd scripts
    ./screenshots.sh
 ```
 
