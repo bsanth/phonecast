@@ -14,7 +14,9 @@ In one shell, run
 
 In another shell run
 
-``` ./scripts/screenshots.sh ```
+``` cd scripts
+   ./screenshots.sh
+```
 
 Go to [localhost:3000](localhost:3000)
 
