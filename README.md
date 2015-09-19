@@ -4,7 +4,7 @@ Cast phone to computer
 
 ## Pre-reqs
 
-Connect phone to computer via USB before and make sure you have adb in path
+Connect phone to computer via USB before and make sure you have adb v24.3.4 in path
 
 ## Instructions
 
