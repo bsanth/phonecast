@@ -33,6 +33,13 @@ router.post('/touch', function(req, res) {
    });
 })
 
+router.post('/swipe', function(req, res) {
+   console.log('adb shell input swipe ' + req.body.startX + ' ' + req.body.startY + ' ' + req.body.endX + ' ' + req.body.endY + ' ' + req.body.duration);
+   exec('adb shell input swipe ' + req.body.startX + ' ' + req.body.startY + ' ' + req.body.endX + ' ' + req.body.endY + ' ' + req.body.duration, function(error, stdout, stderr) {
+      res.json({});
+   });
+})
+
 router.post('/key', function(req, res) {
    if(req.body.key == 67 || req.body.key == 66 ) {
       console.log('adb shell input keyevent ' + req.body.key);

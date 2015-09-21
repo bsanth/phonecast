@@ -1,4 +1,5 @@
 <script src="jquery-2.1.4.min.js" ></script>
+<script src="jquery-touchswipe.min.js" ></script>
 <script>
    function fetchBlob(uri, callback) {
      var xhr = new XMLHttpRequest();
@@ -43,9 +44,39 @@
    });
 
    $(function() {
+      var swiped = false;
+      var postTouchEvent = function(e) {
+         if(!swiped) {
+            $.post("/api/touch", { "x": e.offsetX*3, "y": e.offsetY*3});
+            swiped = false;
+         }
+      };
+
       // Get click event
       $("#screenshot").click(function(e) {
-         $.post("/api/touch", { "x": e.offsetX*3, "y": e.offsetY*3});
+         setTimeout(postTouchEvent(e), 0);
+      });
+
+      $("#screenshot").swipe( {
+         // Tap does not work. Change to tap after it is fixed.
+         // tap:function(e, target) {
+         //    $.post("/api/touch", { "x": e.offsetX*3, "y": e.offsetY*3});
+         // },
+         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+            swiped = true;
+            $.post("/api/swipe", {
+               "startX": fingerData[0].start.x*3,
+               "startY": fingerData[0].start.y*3,
+               "endX": event.offsetX*3,
+               "endY": event.offsetY*3,
+               "duration": duration
+            }).success(function(data) {
+               swiped = false;
+            });
+         },
+
+         //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:75
       });
 
       $(document).bind("keypress", function(event) {
@@ -77,5 +108,7 @@
    }
 </style>
 <div id="image-div">
-   <img src="" id="screenshot">
+   <span id="test">
+      <img src="" id="screenshot">
+   </span>
 </div>
