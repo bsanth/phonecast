@@ -14,7 +14,7 @@ In one shell, run
 
 In another shell run
 
-``` 
+```
    cd scripts
    ./screenshots.sh
 ```
@@ -22,3 +22,7 @@ In another shell run
 Go to [localhost:3000](localhost:3000)
 
 To stop, Ctrl+c in both shell windows to kill both and close browser tab.
+
+## Working GIF
+
+![alt tag](https://github.com/bsanth/phonecast/raw/master/phonecast.gif)
