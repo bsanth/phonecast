@@ -22,3 +22,5 @@ In another shell run
 Go to [localhost:3000](localhost:3000)
 
 To stop, Ctrl+c in both shell windows to kill both and close browser tab.
+
+To see working: [https://www.youtube.com/watch?v=37wkwtd961I](https://www.youtube.com/watch?v=37wkwtd961I)
